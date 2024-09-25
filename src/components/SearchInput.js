@@ -20,11 +20,7 @@ const SearchInput = ({ setSheetData }) => {
   // Manejar la selección de la hoja y obtener sus datos
   const handleSheetChange = async (e) => {
     const sheetName = e.target.value;
-    // Eliminar la asignación a selectedSheet si no es necesaria
-    // setSelectedSheet(sheetName);
-    
-    // Verificar la hoja seleccionada
-    console.log("Hoja seleccionada:", sheetName);
+
 
     if (sheetName) {
       const data = await fetchData(sheetName);
