@@ -40,7 +40,7 @@ const InfoList = ({ data = [] }) => {
             );
           })
         ) : (
-          <li>No hay datos disponibles</li>
+          <li>No hay datos aca</li>
         )}
       </ul>
     </div>
