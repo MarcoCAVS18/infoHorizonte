@@ -5,7 +5,7 @@ const InfoList = ({ data = [] }) => {
   console.log("Datos en InfoList:", data); 
 
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4">
+    <div className="bg-white shadow-lg rounded-lg p-0 md:p-4 lg:p-4">
       <ul>
         {data.length > 0 ? (
           data.map((item, index) => {
