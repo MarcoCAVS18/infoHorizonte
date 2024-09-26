@@ -33,9 +33,8 @@ const SearchInput = ({ setSheetData }) => {
 
   return (
     <div className="w-full max-w-lg mt-4">
-      {/* Select para elegir la hoja */}
       <select className="w-full p-2 border rounded-md" onChange={handleSheetChange}>
-        <option value="">Selecciona una hoja</option>
+        <option value="">Selecciona una actividad</option>
         {sheetNames.map((sheetName, index) => (
           <option key={index} value={sheetName}>
             {sheetName}

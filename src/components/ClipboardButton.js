@@ -1,6 +1,6 @@
 // src/components/ClipboardButton.js
 import React, { useState, useEffect } from 'react';
-import { FaClipboard, FaCheck } from 'react-icons/fa'; // Iconos de clipboard y check para cambiar
+import { FaClipboard, FaCheck } from 'react-icons/fa'; 
 import PropTypes from 'prop-types';
 
 const ClipboardButton = ({ textToCopy }) => {
@@ -21,8 +21,8 @@ const ClipboardButton = ({ textToCopy }) => {
     if (copied) {
       const timer = setTimeout(() => {
         setCopied(false);
-      }, 4000); // 4 segundos
-      return () => clearTimeout(timer); // Limpiar el temporizador al desmontar
+      }, 4000); 
+      return () => clearTimeout(timer); 
     }
   }, [copied]);
 

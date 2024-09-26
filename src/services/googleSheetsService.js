@@ -1,3 +1,4 @@
+// src/services/googleSheetsService.js
 import axios from 'axios';
 
 const SHEET_ID = '1nVgDvMFgGNBa6z1BOquw7QH_4yCG07AVJ8Eydi33jR4';
@@ -11,7 +12,6 @@ export const fetchSheetNames = async () => {
     const response = await axios.get(url);
     const sheets = response.data.sheets;
 
-    // Verificar el contenido de las hojas
     console.log("Nombres de las hojas:", sheets.map(sheet => sheet.properties.title));
 
     return sheets.map(sheet => sheet.properties.title);
@@ -23,7 +23,7 @@ export const fetchSheetNames = async () => {
 
 // Función para obtener los datos de una hoja específica
 export const fetchData = async (sheetName) => {
-  const RANGE = `${sheetName}!A1:H`; // Ajustamos el rango para que capture todas las filas
+  const RANGE = `${sheetName}!A1:E100`;
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
 
   try {
@@ -35,22 +35,21 @@ export const fetchData = async (sheetName) => {
       return [];
     }
 
-    // Verificar si los datos de la hoja se están obteniendo correctamente
     console.log(`Datos obtenidos de la hoja ${sheetName}:`, data);
 
-    // Convertir las filas en objetos con las columnas correspondientes
+    // Convertir las filas en objetos con las nuevas columnas correspondientes
     const formattedData = data.slice(1).map(row => ({
       ID: row[0] || '',
-      TITULAR: row[1] || '',
-      BANCO: row[2] || '',
-      CUIT: row[3] || '',
-      CBU: row[4] || '',
-      ALIAS: row[5] || '',
-      OBSERVACION: row[6] || '',
-      CUENTA: row[7] || ''
+      CATEGORIA: row[1] || '',
+      DIAS: row[2] || '',
+      HORARIOS: row[3] || '',
+      INFORMACION: row[4] || '', 
     }));
 
-    // Verificar los datos formateados
+        formattedData.forEach(item => {
+          console.log(`ID: ${item.ID}, Información: ${item.INFORMACION}`);
+        });
+
     console.log(`Datos formateados de la hoja ${sheetName}:`, formattedData);
 
     return formattedData;
